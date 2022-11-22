@@ -20,13 +20,16 @@ class Perm:
         return s
 
     def swap(self, a, b):
-        ops.swap(self, a, b)
+        ops.swap(self, a, b, False)
 
     def flip(self, a, b):
-        ops.swap(self, a, b)
+        ops.swap(self, a, b, False)
 
     def rotate(self, a, b, to_right=True):
-        ops.rotate(self, a, b, to_right)
+        ops.rotate(self, a, b, to_right, False)
+
+    def complement(self):
+        ops.complement(self, is_copy=False)
 
     def copy(self):
         return Perm(self.n, self.elements.copy())
