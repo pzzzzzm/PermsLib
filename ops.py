@@ -48,5 +48,5 @@ def index_repr(p):
     for i in range(1, len(p.elements)+1):
         e = p.elements[i-1]
         index_list[e-1] = i
-    return perm.Perm(p.n, index_list)
+    return perm.Perm(index_list)
 

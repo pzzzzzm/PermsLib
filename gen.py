@@ -5,7 +5,7 @@ def _gen_perms_recur(n, length, vd, cnt, limit, prev, perms):
     # if 0 < limit <= cnt:
     #     return cnt
     if len(prev) == length:
-        perms.append(Perm(length, prev.copy()))
+        perms.append(Perm(prev.copy()))
         cnt += 1
         return cnt
     for i in range(1, n+1):

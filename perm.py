@@ -3,15 +3,8 @@ import ops
 
 class Perm:
 
-    def __init__(self, n, preset=None):
-        self.n = n
-        if preset is None:
-            self.elements = [i for i in range(1, n+1)]
-        else:
-            if len(preset) != n:
-                raise Exception('Inconsistent length of init array.')
-            else:
-                self.elements = preset
+    def __init__(self, preset=None):
+        self.elements = preset
 
     def __str__(self):
         s = ''
@@ -32,5 +25,5 @@ class Perm:
         ops.complement(self, is_copy=False)
 
     def copy(self):
-        return Perm(self.n, self.elements.copy())
+        return Perm(self.elements.copy())
 

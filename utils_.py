@@ -1,3 +1,4 @@
+from perm import Perm
 
 
 def perms_to_dict(perms, default_value=1):
@@ -31,3 +32,5 @@ def check_dict_by_list(d, perms):
     return True
 
 
+def create_n_perm(n):
+    return Perm([i+1 for i in range(n)])
