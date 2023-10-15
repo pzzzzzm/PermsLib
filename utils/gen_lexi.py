@@ -1,14 +1,12 @@
-from perm import Perm
-
 
 def _gen_perms_recur(n, length, vd, cnt, limit, prev, perms):
     # if 0 < limit <= cnt:
     #     return cnt
     if len(prev) == length:
-        perms.append(Perm(prev.copy()))
+        perms.append(prev.copy())
         cnt += 1
         return cnt
-    for i in range(1, n+1):
+    for i in vd.keys():
         if vd[i] > 0:
             prev.append(i)
             vd[i] -= 1
@@ -36,4 +34,13 @@ def gen_perms(n, limit=-1, multiset_dict=None):
     _gen_perms_recur(n, length, volume_dict, cnt, limit, first_perm, perms)
     return perms
 
+
+def gen_binary(n, limit=-1):
+    perms = []
+    first_perm = []
+    cnt = 0
+    length = n
+    volume_dict = {0: n, 1: n}
+    _gen_perms_recur(n, length, volume_dict, cnt, limit, first_perm, perms)
+    return perms
 
