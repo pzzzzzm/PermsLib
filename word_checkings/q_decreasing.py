@@ -1,7 +1,8 @@
 
-
 def _check_qab(q, a, b):
     return a == 0 or q*a > b
+
+
 def check_q_decreasing(perm, q):
     a, b, prev = 0, 0, 0
     for e in perm:

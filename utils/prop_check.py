@@ -1,13 +1,13 @@
-
 def _perm_to_str(p, spliter='.'):
     s_out = ''
     for e in p:
         s_out += str(e) + spliter
     return s_out
 
-def plist_to_dict(perms, default_value=1, spliter='.'):
+
+def plist_to_dict(plist, default_value=1, spliter='.'):
     d = {}
-    for p in perms:
+    for p in plist:
         d[_perm_to_str(p, spliter)] = default_value
     return d
 
@@ -27,8 +27,10 @@ def check_dict_exhaustive(d, check_value=0):
     return True
 
 
-def check_dict_by_plist(d, perms, spliter='.'):
-    for p in perms:
+def check_dict_by_plist(d, plist, spliter='.'):
+    if len(d) != len(plist):
+        return False
+    for p in plist:
         if not _check_dict_by_perm(d, p, spliter):
             return False
     if not check_dict_exhaustive(d):
@@ -51,3 +53,11 @@ def get_max_diff(plist):
     for curr in plist:
         max_diff = max(max_diff, _cal_diff(prev, curr))
     return max_diff
+
+
+def filter_plist(plist, f, *args):
+    res = []
+    for p in plist:
+        if f(p, *args):
+            res.append(p)
+    return res
