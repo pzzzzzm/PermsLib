@@ -1,4 +1,5 @@
 
+
 def _gen_perms_recur(n, length, vd, cnt, limit, prev, perms):
     # if 0 < limit <= cnt:
     #     return cnt
@@ -18,7 +19,7 @@ def _gen_perms_recur(n, length, vd, cnt, limit, prev, perms):
     return cnt
 
 
-def gen_perms(n, limit=-1, multiset_dict=None):
+def gen_perms(n: int, limit=-1, multiset_dict=None) -> list[int]:
     perms = []
     first_perm = []
     cnt = 0
@@ -35,7 +36,7 @@ def gen_perms(n, limit=-1, multiset_dict=None):
     return perms
 
 
-def gen_binary(n, limit=-1):
+def gen_binary(n: int, limit=-1) -> list[int]:
     perms = []
     first_perm = []
     cnt = 0

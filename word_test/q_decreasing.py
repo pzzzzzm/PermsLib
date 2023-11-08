@@ -3,7 +3,7 @@ def _check_qab(q, a, b):
     return a == 0 or q*a > b
 
 
-def check_q_decreasing(perm, q):
+def check_q_decreasing(perm: list[int], q: float) -> bool:
     a, b, prev = 0, 0, 0
     for e in perm:
         if e not in [0, 1]:

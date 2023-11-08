@@ -1,3 +1,4 @@
+from typing import Callable
 
 DEFAULT_SPLITER = '.'
 
@@ -9,14 +10,14 @@ def _perm_to_str(p, spliter=DEFAULT_SPLITER):
     return s_out
 
 
-def plist_to_dict(plist, default_value=1, spliter=DEFAULT_SPLITER):
+def plist_to_dict(plist: list[list], default_value=1, spliter=DEFAULT_SPLITER) -> dict:
     d = {}
     for p in plist:
         d[_perm_to_str(p, spliter)] = default_value
     return d
 
 
-def check_dict_by_perm(d, perm, spliter=DEFAULT_SPLITER):
+def check_dict_by_perm(d: dict, perm: list, spliter=DEFAULT_SPLITER) -> bool:
     if d[_perm_to_str(perm, spliter)] < 1:
         return False
     else:
@@ -24,14 +25,14 @@ def check_dict_by_perm(d, perm, spliter=DEFAULT_SPLITER):
         return True
 
 
-def check_dict_exhaustive(d, check_value=0):
+def check_dict_exhaustive(d: dict, check_value=0) -> bool:
     for k in d.keys():
         if d[k] != check_value:
             return False
     return True
 
 
-def check_dict_by_plist(d, plist, spliter=DEFAULT_SPLITER):
+def check_dict_by_plist(d: dict, plist: list[list], spliter=DEFAULT_SPLITER) -> bool:
     if len(d) != len(plist):
         return False
     for p in plist:
@@ -42,7 +43,7 @@ def check_dict_by_plist(d, plist, spliter=DEFAULT_SPLITER):
     return True
 
 
-def diff(p1, p2):
+def diff(p1: list, p2: list) -> int:
     assert len(p1) == len(p2)
     d = 0
     for i in range(len(p1)):
@@ -51,7 +52,7 @@ def diff(p1, p2):
     return d
 
 
-def get_max_diff(plist):
+def get_max_diff(plist: list) -> int:
     max_diff = 0
     prev = plist[0]
     for curr in plist:
@@ -59,7 +60,7 @@ def get_max_diff(plist):
     return max_diff
 
 
-def filter_plist(plist, f, *args):
+def filter_plist(plist: list[list], f: Callable[..., bool], *args) -> list[list]:
     res = []
     for p in plist:
         if f(p, *args):
