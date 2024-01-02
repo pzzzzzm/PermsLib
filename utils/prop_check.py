@@ -1,9 +1,10 @@
 from typing import Callable
+import copy
 
 DEFAULT_SPLITER = '.'
 
 
-def _perm_to_str(p, spliter=DEFAULT_SPLITER):
+def perm_to_str(p, spliter=DEFAULT_SPLITER):
     s_out = ''
     for e in p:
         s_out += str(e) + spliter
@@ -13,15 +14,15 @@ def _perm_to_str(p, spliter=DEFAULT_SPLITER):
 def plist_to_dict(plist: list[list], default_value=1, spliter=DEFAULT_SPLITER) -> dict:
     d = {}
     for p in plist:
-        d[_perm_to_str(p, spliter)] = default_value
+        d[perm_to_str(p, spliter)] = copy.copy(default_value)
     return d
 
 
 def check_dict_by_perm(d: dict, perm: list, spliter=DEFAULT_SPLITER) -> bool:
-    if d[_perm_to_str(perm, spliter)] < 1:
+    if d[perm_to_str(perm, spliter)] < 1:
         return False
     else:
-        d[_perm_to_str(perm, spliter)] -= 1
+        d[perm_to_str(perm, spliter)] -= 1
         return True
 
 
