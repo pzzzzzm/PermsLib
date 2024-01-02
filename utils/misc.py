@@ -15,3 +15,4 @@ def print_p(p: list, splitter='', ge10_check=False) -> str:
 def print_plist(plist: list[list], splitter='', ge10_check=False):
     for p in plist:
         print_p(p, splitter, ge10_check)
+

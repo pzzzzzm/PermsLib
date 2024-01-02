@@ -1,3 +1,4 @@
+from math import ceil
 
 
 def _gen_perms_recur(n, length, vd, cnt, limit, prev, perms):
@@ -19,7 +20,7 @@ def _gen_perms_recur(n, length, vd, cnt, limit, prev, perms):
     return cnt
 
 
-def gen_perms(n: int, limit=-1, multiset_dict=None) -> list[int]:
+def gen_perms(n: int, limit=-1, multiset_dict=None) -> list[list[int]]:
     perms = []
     first_perm = []
     cnt = 0
@@ -36,7 +37,7 @@ def gen_perms(n: int, limit=-1, multiset_dict=None) -> list[int]:
     return perms
 
 
-def gen_binary(n: int, limit=-1) -> list[int]:
+def gen_binary(n: int, limit=-1) -> list[list[int]]:
     perms = []
     first_perm = []
     cnt = 0
@@ -44,4 +45,38 @@ def gen_binary(n: int, limit=-1) -> list[int]:
     volume_dict = {0: n, 1: n}
     _gen_perms_recur(n, length, volume_dict, cnt, limit, first_perm, perms)
     return perms
+
+
+# def _gen_all_perms_recur(n, l, limit=-1):
+#     if l <= 1:
+#         return [[i] for i in range(1, n+1)]
+#     sub_perms = _gen_all_perms_recur(n, l-1, limit)
+#     perms = []
+#     for i in range(1, n+1):
+#         for sp in sub_perms:
+#             if not (0 < limit <= len(perms)):
+#                 perms.append([i]+sp)
+#     return perms
+#
+#
+# def gen_all_perms(n: int, limit=-1) -> list[list[int]]:
+#     return _gen_all_perms_recur(n, n, limit)
+
+
+def _gen_integer_partition_lexi(n, l, prev_max, limit=-1):
+    if l == 1:
+        return [[n]]
+    perms = []
+    for i in range(ceil(n/l), min(prev_max+1, n-l+2)):
+        sub_perms = _gen_integer_partition_lexi(n-i, l-1, i, limit)
+        for sp in sub_perms:
+            if not (0 < limit <= len(perms)):
+                perms.append([i]+sp)
+            else:
+                return perms
+    return perms
+
+
+def gen_integer_partition_lexi(n: int, l: int, limit=-1) -> list[list[int]]:
+    return _gen_integer_partition_lexi(n, l, n, limit)
 
