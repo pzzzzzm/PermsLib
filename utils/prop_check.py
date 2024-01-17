@@ -58,6 +58,7 @@ def get_max_diff(plist: list) -> int:
     prev = plist[0]
     for curr in plist:
         max_diff = max(max_diff, diff(prev, curr))
+        prev = curr
     return max_diff
 
 
