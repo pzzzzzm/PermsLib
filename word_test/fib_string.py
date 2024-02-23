@@ -1,5 +1,5 @@
 
-def check_fib_string(perm: list[int], k: int) -> bool:
+def test_fib_string(perm: list[int], k: int) -> bool:
     c = 0
     for e in perm:
         if e not in [0, 1]:
@@ -13,8 +13,8 @@ def check_fib_string(perm: list[int], k: int) -> bool:
     return True
 
 
-def check_lucas(perm: list[int], k: int) -> bool:
-    if not check_fib_string(perm, k):
+def test_lucas(perm: list[int], k: int) -> bool:
+    if not test_fib_string(perm, k):
         return False
     try:
         return k >= (perm.index(0)+perm[-1::-1].index(0))

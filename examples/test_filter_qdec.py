@@ -6,11 +6,12 @@ from utils import *
 
 n = 7
 q = 1
+
+# generate all binary permutation
 plist = gen_binary(n)
 
-qdecs = []
-for p in plist:
-    qdecs.append(p) if check_q_decreasing(p, q) else qdecs
+# filter out the permutations which are not q-deceasing words
+qdecs = filter_plist(plist, check_q_decreasing, q)
 
 print_plist(qdecs)
 print("Total: {}".format(len(qdecs)))

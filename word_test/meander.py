@@ -1,11 +1,11 @@
 
-def check_meander(perm):
+def test_meander(perm):
     pass
 
 
-def check_semi_meander(perm):
+def test_semi_meander(perm):
     pass
 
 
-def check_open_meander(perm):
+def test_open_meander(perm):
     pass

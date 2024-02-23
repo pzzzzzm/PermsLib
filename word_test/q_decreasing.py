@@ -1,9 +1,9 @@
 
-def _check_qab(q, a, b):
+def _test_qab(q, a, b):
     return a == 0 or q*a > b
 
 
-def check_q_decreasing(perm: list[int], q: float) -> bool:
+def test_q_decreasing(perm: list[int], q: float) -> bool:
     a, b, prev = 0, 0, 0
     for e in perm:
         if e not in [0, 1]:
@@ -18,8 +18,8 @@ def check_q_decreasing(perm: list[int], q: float) -> bool:
             if e == 1:
                 b += 1
             else:
-                if _check_qab(q, a, b):
+                if _test_qab(q, a, b):
                     a, b, prev = 1, 0, 0
                 else:
                     return False
-    return _check_qab(q, a, b)
+    return _test_qab(q, a, b)

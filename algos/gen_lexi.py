@@ -63,12 +63,12 @@ def gen_binary(n: int, limit=-1) -> list[list[int]]:
 #     return _gen_all_perms_recur(n, n, limit)
 
 
-def _gen_integer_partition_lexi(n, l, prev_max, limit=-1):
+def _gen_integer_partition_lexi_recur(n, l, prev_max, limit=-1):
     if l == 1:
         return [[n]]
     perms = []
     for i in range(ceil(n/l), min(prev_max+1, n-l+2)):
-        sub_perms = _gen_integer_partition_lexi(n-i, l-1, i, limit)
+        sub_perms = _gen_integer_partition_lexi_recur(n-i, l-1, i, limit)
         for sp in sub_perms:
             if not (0 < limit <= len(perms)):
                 perms.append([i]+sp)
@@ -78,5 +78,5 @@ def _gen_integer_partition_lexi(n, l, prev_max, limit=-1):
 
 
 def gen_integer_partition_lexi(n: int, l: int, limit=-1) -> list[list[int]]:
-    return _gen_integer_partition_lexi(n, l, n, limit)
+    return _gen_integer_partition_lexi_recur(n, l, n, limit)
 
