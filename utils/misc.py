@@ -1,3 +1,4 @@
+from typing import Callable
 
 
 def print_p(p: list, splitter='', ge10_check=False) -> str:
@@ -15,4 +16,10 @@ def print_p(p: list, splitter='', ge10_check=False) -> str:
 def print_plist(plist: list[list], splitter='', ge10_check=False):
     for p in plist:
         print_p(p, splitter, ge10_check)
+
+
+def modify_elements_in_plist(plist: list[list], f: Callable, *args):
+    for i in range(len(plist)):
+        for j in range(len(plist[i])):
+            plist[i][j] = f(plist[i][j], *args)
 
