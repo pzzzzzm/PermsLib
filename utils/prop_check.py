@@ -44,20 +44,23 @@ def check_dict_by_plist(d: dict, plist: list[list], spliter=DEFAULT_SPLITER) -> 
     return True
 
 
-def diff(p1: list, p2: list) -> int:
+def diff(p1: list, p2: list, bit_diff=False) -> int:
     assert len(p1) == len(p2)
     d = 0
     for i in range(len(p1)):
         if p1[i] != p2[i]:
-            d += 1
+            if bit_diff:
+                d += abs(p1[i] - p2[i])
+            else:
+                d += 1
     return d
 
 
-def get_max_diff(plist: list) -> int:
+def get_max_diff(plist: list, bit_diff=False) -> int:
     max_diff = 0
     prev = plist[0]
     for curr in plist:
-        max_diff = max(max_diff, diff(prev, curr))
+        max_diff = max(max_diff, diff(prev, curr, bit_diff))
         prev = curr
     return max_diff
 

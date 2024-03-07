@@ -5,7 +5,7 @@ def complement_plist(plist: list[list]):
     modify_elements_in_plist(plist, lambda x: 1-x)
 
 
-def concat(plist1: list[list], plist2: list[list]):
+def concat(plist1: list[list], plist2: list[list]) -> list[list]:
     if not plist1:
         return plist2
     if not plist2:
