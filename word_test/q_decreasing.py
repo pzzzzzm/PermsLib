@@ -23,3 +23,5 @@ def test_q_decreasing(perm: list[int], q: float) -> bool:
                 else:
                     return False
     return _test_qab(q, a, b)
+
+

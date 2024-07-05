@@ -19,9 +19,9 @@ def concat(plist1: list[list], plist2: list[list]) -> list[list]:
 
 
 def rotation(perm: list, step: int, direction='r') -> list:
-    assert direction in ['r', 'l']
+    assert direction in ['r', 'l', 0, 1]
     step = step % len(perm)
-    if direction == 'r':
+    if direction == 'r' or direction == 0:
         step = len(perm) - step
     return perm[step:] + perm[:step]
 
