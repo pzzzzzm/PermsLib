@@ -56,12 +56,16 @@ def diff(p1: list, p2: list, bit_diff=False) -> int:
     return d
 
 
-def get_max_diff(plist: list, bit_diff=False) -> int:
+def get_max_diff(plist: list, bit_diff=False, cyclic=False) -> int:
     max_diff = 0
     prev = plist[0]
     for curr in plist:
         max_diff = max(max_diff, diff(prev, curr, bit_diff))
         prev = curr
+
+    if cyclic:
+        max_diff = max(max_diff, diff(plist[0], plist[-1], bit_diff))
+
     return max_diff
 
 
